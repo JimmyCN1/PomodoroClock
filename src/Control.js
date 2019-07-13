@@ -6,14 +6,9 @@ function Control({ handleControl }) {
     color: "#003249"
   };
 
-  // const buttonStyle = {
-  //   all: "unset"
-  // };
-
   return (
     <div style={controlStyle}>
-      <h1>Controls</h1>
-      <h5>
+      <h5 style={{ position: "relative", top: "15px" }}>
         <button onClick={e => handleControl(e)}>
           <div>
             <i id="playPause" className="fas fa-play" />

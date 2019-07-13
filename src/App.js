@@ -7,7 +7,7 @@ import Control from "./Control";
 
 function App() {
   const [breakTime, setBreakTime] = useState(5);
-  const [sessionTime, setSessionTime] = useState(25);
+  const [sessionTime, setSessionTime] = useState(1);
   const [sessionActive, setSessionActive] = useState(true);
   const [running, setRunning] = useState(false);
   const [paused, setPaused] = useState(true);
@@ -66,7 +66,7 @@ function App() {
 
   return (
     <div className="App" style={appStyle}>
-      <div className="container">
+      <div className="container" style={{ maxWidth: "500px" }}>
         <h1>Pomodoro Clock</h1>
         <div className="row">
           <div className="col-sm-6">
@@ -85,7 +85,10 @@ function App() {
           </div>
         </div>
         <div className="row">
-          <div className="col">
+          <div
+            className="col"
+            style={{ display: "flex", justifyContent: "center" }}
+          >
             <StopWatch
               breakTime={breakTime}
               sessionTime={sessionTime}
@@ -93,6 +96,7 @@ function App() {
               running={running}
               paused={paused}
               handleSessionActive={setSessionActive}
+              handleFinishCountDown={handleFinishCountDown}
             />
           </div>
         </div>
