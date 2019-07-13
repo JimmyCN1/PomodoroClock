@@ -1,7 +1,7 @@
 import React from "react";
 import "./Button.css";
 
-function Control() {
+function Control({ handleControl }) {
   const controlStyle = {
     color: "#003249"
   };
@@ -14,15 +14,15 @@ function Control() {
     <div style={controlStyle}>
       <h1>Controls</h1>
       <h5>
-        <button>
-          {/* <span> */}
-          <i className="fas fa-play" />
-          <i className="fas fa-pause" />
-          {/* </span> */}
+        <button onClick={e => handleControl(e)}>
+          <div>
+            <i id="playPause" className="fas fa-play" />
+            <i className="fas fa-pause" />
+          </div>
         </button>
         &nbsp;&nbsp;
         <button>
-          <i className="fas fa-redo-alt" />
+          <i id="reset" className="fas fa-redo-alt" />
         </button>
       </h5>
     </div>

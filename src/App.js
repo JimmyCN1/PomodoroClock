@@ -8,24 +8,35 @@ import Control from "./Control";
 function App() {
   const [breakTime, setBreakTime] = useState(5);
   const [sessionTime, setSessionTime] = useState(25);
-  const [sessionActive, toggleSessionActive] = useState(true);
+  const [sessionActive, setSessionActive] = useState(true);
+  const [running, setRunning] = useState(false);
 
   const handleSetting = (type, e) => {
-    let button = type.toLowerCase();
+    let setter = type.toLowerCase();
     let { id } = e.target;
     e.preventDefault();
-    if (button === "break") {
-      if (id === "increment") {
-        setBreakTime(breakTime + 1);
-      } else if (id === "decrement") {
-        breakTime > 1 && setBreakTime(breakTime - 1);
+    if (!running) {
+      if (setter === "break") {
+        if (id === "increment") {
+          setBreakTime(breakTime + 1);
+        } else if (id === "decrement") {
+          breakTime > 1 && setBreakTime(breakTime - 1);
+        }
+      } else if (setter === "session") {
+        if (id === "increment") {
+          setSessionTime(sessionTime + 1);
+        } else if (id === "decrement") {
+          sessionTime > 1 && setSessionTime(sessionTime - 1);
+        }
       }
-    } else if (button === "session") {
-      if (id === "increment") {
-        setSessionTime(sessionTime + 1);
-      } else if (id === "decrement") {
-        sessionTime > 1 && setSessionTime(sessionTime - 1);
-      }
+    }
+  };
+
+  const handleFinishCountDown = () => setSessionActive(!sessionActive);
+
+  const handleControl = e => {
+    if (e.target.id === "playPause") {
+      setRunning(!running);
     }
   };
 
@@ -56,12 +67,18 @@ function App() {
         </div>
         <div className="row">
           <div className="col">
-            <StopWatch />
+            <StopWatch
+              breakTime={breakTime}
+              sessionTime={sessionTime}
+              sessionActive={sessionActive}
+              running={running}
+              handleSessionActive={setSessionActive}
+            />
           </div>
         </div>
         <div className="row">
           <div className="col">
-            <Control />
+            <Control handleControl={handleControl} />
           </div>
         </div>
       </div>
