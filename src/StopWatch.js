@@ -34,11 +34,11 @@ function StopWatch({
       } else if (!sessionActive) {
         setMin(sessionTime);
       }
-      setSec(59);
+      setSec(60);
       handleFinishCountDown();
     } else if (secString === "00") {
       setMin(min - 1);
-      setSec(59);
+      setSec(60);
     } else {
       setSec(sec - 1);
     }
