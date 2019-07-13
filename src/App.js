@@ -7,7 +7,7 @@ import Control from "./Control";
 
 function App() {
   const [breakTime, setBreakTime] = useState(5);
-  const [sessionTime, setSessionTime] = useState(1);
+  const [sessionTime, setSessionTime] = useState(25);
   const [sessionActive, setSessionActive] = useState(true);
   const [running, setRunning] = useState(false);
   const [paused, setPaused] = useState(true);

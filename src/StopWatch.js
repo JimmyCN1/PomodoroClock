@@ -53,7 +53,7 @@ function StopWatch({
   });
 
   const stopWatchStyle = {
-    width: "200px",
+    width: "250px",
     borderStyle: "solid",
     borderColor: "#003249",
     borderWidth: "5px",
