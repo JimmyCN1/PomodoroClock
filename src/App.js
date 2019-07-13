@@ -10,6 +10,7 @@ function App() {
   const [sessionTime, setSessionTime] = useState(25);
   const [sessionActive, setSessionActive] = useState(true);
   const [running, setRunning] = useState(false);
+  const [paused, setPaused] = useState(true);
 
   const handleSetting = (type, e) => {
     let setter = type.toLowerCase();
@@ -35,8 +36,26 @@ function App() {
   const handleFinishCountDown = () => setSessionActive(!sessionActive);
 
   const handleControl = e => {
-    if (e.target.id === "playPause") {
-      setRunning(!running);
+    let { id } = e.target;
+    if (id === "playPause") {
+      setRunning(true);
+      // if (!paused) {
+      // setSessionTime(sessionTime);
+      setPaused(!paused);
+      // } else if (!running) {
+      // }
+      // setRunning(!running);
+
+      console.log(`running: ${running} paused: ${paused}`);
+    } else if (id === "reset") {
+      setRunning(false);
+      setPaused(true);
+      setSessionActive(true);
+      console.log(
+        `running: ${running} paused: ${paused} sessionActive: ${sessionActive} sessionTime: ${sessionTime}`
+      );
+      // setSessionTime(sessionTime);
+      //TODO: make session length show in timer when reset button pressed
     }
   };
 
@@ -72,6 +91,7 @@ function App() {
               sessionTime={sessionTime}
               sessionActive={sessionActive}
               running={running}
+              paused={paused}
               handleSessionActive={setSessionActive}
             />
           </div>

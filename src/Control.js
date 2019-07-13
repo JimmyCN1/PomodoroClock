@@ -21,7 +21,7 @@ function Control({ handleControl }) {
           </div>
         </button>
         &nbsp;&nbsp;
-        <button>
+        <button onClick={e => handleControl(e)}>
           <i id="reset" className="fas fa-redo-alt" />
         </button>
       </h5>
