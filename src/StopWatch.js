@@ -34,11 +34,11 @@ function StopWatch({
       } else if (!sessionActive) {
         setMin(sessionTime);
       }
-      setSec(60);
+      setSec(0);
       handleFinishCountDown();
     } else if (secString === "00") {
       setMin(min - 1);
-      setSec(60);
+      setSec(59);
     } else {
       setSec(sec - 1);
     }
@@ -50,7 +50,7 @@ function StopWatch({
       setSec(0);
     } else if (running) {
       if (!paused) {
-        const id = setInterval(countdown, 1000);
+        const id = setInterval(countdown, 300);
         return () => clearInterval(id);
       }
     }
