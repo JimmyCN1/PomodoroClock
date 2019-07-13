@@ -19,11 +19,16 @@ function StopWatch({
     minimumIntegerDigits: 2
   }).format(sec);
 
+  let alarm = new Audio();
+  alarm.src =
+    "http://www.peter-weinberg.com/files/1014/8073/6015/BeepSound.wav";
+
   const countdown = () => {
     const minString = minFormatted.toString();
     const secString = secFormatted.toString();
     if (minString === "00" && secString === "00") {
       console.log("times up!!");
+      alarm.play();
       if (sessionActive) {
         setMin(breakTime);
       } else if (!sessionActive) {
@@ -46,14 +51,14 @@ function StopWatch({
       setSec(0);
     } else if (running) {
       if (!paused) {
-        const id = setInterval(countdown, 1000);
+        const id = setInterval(countdown, 100);
         return () => clearInterval(id);
       }
     }
   });
 
   const stopWatchStyle = {
-    width: "250px",
+    width: "290px",
     borderStyle: "solid",
     borderColor: "#003249",
     borderWidth: "5px",
