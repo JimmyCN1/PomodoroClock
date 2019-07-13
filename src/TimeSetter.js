@@ -1,6 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 
-function TimeSetter({ type }) {
+function TimeSetter({ type, defaultTime }) {
+  const [time, setTime] = useState(defaultTime);
+
+  let handleClick = e => {
+    let { id } = e.target;
+    e.preventDefault();
+    if (id === "increment") {
+      setTime(time + 1);
+    } else if (id === "decrement") {
+      setTime(time - 1);
+    }
+  };
+
   const setterStyle = {
     display: "flex",
     flexDirection: "row",
@@ -12,12 +24,12 @@ function TimeSetter({ type }) {
       <h2>{`${type} length`}</h2>
       <div style={setterStyle}>
         <h2>
-          <button>
-            <i class="fas fa-arrow-up" />
+          <button name="increment" onClick={handleClick}>
+            <i id="increment" className="fas fa-arrow-up" />
           </button>
-          &nbsp;1&nbsp;
-          <button>
-            <i class="fas fa-arrow-down" />
+          {` ${time} `}
+          <button name="decrement" onClick={handleClick}>
+            <i id="decrement" className="fas fa-arrow-down" />
           </button>
         </h2>
       </div>

@@ -16,13 +16,13 @@ function Control() {
       <h5>
         <button>
           {/* <span> */}
-          <i class="fas fa-play" />
-          <i class="fas fa-pause" />
+          <i className="fas fa-play" />
+          <i className="fas fa-pause" />
           {/* </span> */}
         </button>
         &nbsp;&nbsp;
         <button>
-          <i class="fas fa-redo-alt" />
+          <i className="fas fa-redo-alt" />
         </button>
       </h5>
     </div>

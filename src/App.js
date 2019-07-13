@@ -18,10 +18,10 @@ function App() {
         <h1>Pomodoro Clock</h1>
         <div className="row">
           <div className="col-sm-6">
-            <TimeSetter type="Break" />
+            <TimeSetter type="Break" defaultTime={5} />
           </div>
           <div className="col-sm-6">
-            <TimeSetter type="Session" />
+            <TimeSetter type="Session" defaultTime={25} />
           </div>
         </div>
         <div className="row">
