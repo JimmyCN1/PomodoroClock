@@ -6,7 +6,8 @@ function StopWatch({
   sessionActive,
   running,
   paused,
-  handleFinishCountDown
+  handleFinishCountDown,
+  playAlarm
 }) {
   const [min, setMin] = useState(sessionTime);
   const [sec, setSec] = useState(0);
@@ -27,8 +28,7 @@ function StopWatch({
     const minString = minFormatted.toString();
     const secString = secFormatted.toString();
     if (minString === "00" && secString === "00") {
-      console.log("times up!!");
-      alarm.play();
+      playAlarm && alarm.play();
       if (sessionActive) {
         setMin(breakTime);
       } else if (!sessionActive) {
@@ -37,7 +37,6 @@ function StopWatch({
       setSec(59);
       handleFinishCountDown();
     } else if (secString === "00") {
-      console.log("wat");
       setMin(min - 1);
       setSec(59);
     } else {
@@ -51,7 +50,7 @@ function StopWatch({
       setSec(0);
     } else if (running) {
       if (!paused) {
-        const id = setInterval(countdown, 100);
+        const id = setInterval(countdown, 1000);
         return () => clearInterval(id);
       }
     }

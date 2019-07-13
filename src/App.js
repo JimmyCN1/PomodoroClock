@@ -11,6 +11,7 @@ function App() {
   const [sessionActive, setSessionActive] = useState(true);
   const [running, setRunning] = useState(false);
   const [paused, setPaused] = useState(true);
+  const [playAlarm, setPlayAlarm] = useState(true);
 
   const handleSetting = (type, e) => {
     let setter = type.toLowerCase();
@@ -39,23 +40,13 @@ function App() {
     let { id } = e.target;
     if (id === "playPause") {
       setRunning(true);
-      // if (!paused) {
-      // setSessionTime(sessionTime);
       setPaused(!paused);
-      // } else if (!running) {
-      // }
-      // setRunning(!running);
-
-      console.log(`running: ${running} paused: ${paused}`);
     } else if (id === "reset") {
       setRunning(false);
       setPaused(true);
       setSessionActive(true);
-      console.log(
-        `running: ${running} paused: ${paused} sessionActive: ${sessionActive} sessionTime: ${sessionTime}`
-      );
-      // setSessionTime(sessionTime);
-      //TODO: make session length show in timer when reset button pressed
+    } else if (id === "alarm") {
+      setPlayAlarm(!playAlarm);
     }
   };
 
@@ -97,12 +88,13 @@ function App() {
               paused={paused}
               handleSessionActive={setSessionActive}
               handleFinishCountDown={handleFinishCountDown}
+              playAlarm={playAlarm}
             />
           </div>
         </div>
         <div className="row">
           <div className="col">
-            <Control handleControl={handleControl} />
+            <Control handleControl={handleControl} playAlarm={playAlarm} />
           </div>
         </div>
       </div>
