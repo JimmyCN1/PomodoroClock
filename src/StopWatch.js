@@ -50,7 +50,7 @@ function StopWatch({
       setSec(0);
     } else if (running) {
       if (!paused) {
-        const id = setInterval(countdown, 300);
+        const id = setInterval(countdown, 1000);
         return () => clearInterval(id);
       }
     }
