@@ -55,6 +55,8 @@ function App() {
     alignItems: "center"
   };
 
+  // window.innerWidth < 576 && (appStyle.alignItems = "flex-start");
+
   return (
     <div className="App" style={appStyle}>
       <div className="container" style={{ maxWidth: "500px" }}>
